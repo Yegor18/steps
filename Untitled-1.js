@@ -1,25 +1,47 @@
 "use strict";
 
-const answer = prompt("Сколько фильмов вы просмотрели?", "");
+const answer = +prompt("Сколько фильмов вы просмотрели?", "");
 console.log(answer);
-const a = {};
-const b = {};
-let c = [];
-let d = [];
 const personalMovieDB = {
         count: answer,
-        movies: a,
-        actors: b,
-        gentres: c,
+        movies: {},
+        actors: {},
+        gentres: [],
         privat: false,
 } ;
-c[0] = prompt("Один из последних просмотренных фильмов?", "");
-d[0] = prompt("На сколько оцените его?", "");
-c[1] = prompt("Один из последних просмотренных фильмов?", "");
-d[1] = prompt("На сколько оцените его?", "");
-const movies ={
-    name: c,
-    mark: d,
-};
-console.log(movies.name[0] + ":" + movies.mark[0]);
-console.log(movies.name[1] + ":" + movies.mark[1]);
+let a = [];
+let b = [];
+if (personalMovieDB.count<10)
+    {
+        alert("Маловато");
+    }
+    else{
+        if (personalMovieDB.count>=10 && personalMovieDB.count<30)
+        {
+            alert("Молодец");
+        }
+        if (personalMovieDB.count>=30)
+    {
+        alert("Киноман");
+    }
+    else
+    {
+        alert("Ошибка");
+    }
+    }
+for (let i=0;i<2;i++)
+{
+    a[i] = prompt("Один из последних просмотренных фильмов?", "");
+    if ( a[i] ==null || a[i] =="" || a[i].length>=50 )
+            {i--;
+            continue;}
+            b[i] = prompt("На сколько оцените его?", "");
+            while (b[i] ==null || b[i] =="" || b[i].length>=50 )
+            {b[i]=prompt("На сколько оцените его?", "");}
+    personalMovieDB.movies[a[i]] =b[i];
+    
+
+    }
+    
+    
+console.log(personalMovieDB);
